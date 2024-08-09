@@ -14,7 +14,7 @@ pose = mp_pose.Pose(static_image_mode=False,
 mp_drawing = mp.solutions.drawing_utils
 
 # Abre la cámara web.
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)#la 1 la puse para que jale la camara de droidcam, la 0 es la webcam
 
 while cap.isOpened():
     success, image = cap.read()
@@ -23,7 +23,7 @@ while cap.isOpened():
         continue
 
     # Convertir la imagen a RGB.
-    image = cv2.cvtColor(cv2.flip(image, 90), cv2.COLOR_BGR2RGB)
+    #image = cv2.cvtColor(cv2.flip(image, 90), cv2.COLOR_BGR2RGB)
 
     # Procesar la imagen y obtener las poses detectadas.
     results = pose.process(image)
@@ -33,7 +33,7 @@ while cap.isOpened():
         mp_drawing.draw_landmarks(image, results.pose_landmarks, mp_pose.POSE_CONNECTIONS)
 
     # Mostrar la imagen con las poses detectadas.
-    cv2.imshow('MediaPipe Pose', image)
+    cv2.imshow('Valute', image)
 
     # Salir si se presiona la tecla 'q'.
     if cv2.waitKey(5) & 0xFF == ord('q'):
